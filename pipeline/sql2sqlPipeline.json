@@ -1,0 +1,79 @@
+{
+	"name": "sql2sqlPipeline",
+	"properties": {
+		"description": "from Adventurework to TestRE DB",
+		"activities": [
+			{
+				"name": "Copy_jri",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "Person.Person"
+					},
+					{
+						"name": "Destination",
+						"value": "Person.Person"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"additionalColumns": [
+							{
+								"name": "Source",
+								"value": "AW2017"
+							}
+						],
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureDataLakeStoragefb",
+								"type": "LinkedServiceReference"
+							}
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_jri",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_jri",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Old folder"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-07T12:53:36Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
