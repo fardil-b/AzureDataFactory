@@ -1,0 +1,41 @@
+{
+	"name": "configfiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_fb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sampleconfig.CSV",
+				"fileSystem": "lego"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "SourceSystem",
+				"type": "String"
+			},
+			{
+				"name": "SourceFileName",
+				"type": "String"
+			},
+			{
+				"name": "SourceFileExtension",
+				"type": "String"
+			},
+			{
+				"name": "IsActive",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

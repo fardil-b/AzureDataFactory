@@ -1,0 +1,56 @@
+{
+	"name": "parquet to sql",
+	"properties": {
+		"activities": [
+			{
+				"name": "ParquettoSQL Transformation",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dataflowLegotoSQL",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"source1": {
+								"SinkFileName": {
+									"value": "@pipeline().parameters.TransformFileName",
+									"type": "Expression"
+								}
+							},
+							"sink1": {
+								"TableName": {
+									"value": "@pipeline().parameters.TransformFileName",
+									"type": "Expression"
+								}
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"parameters": {
+			"TransformFileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "New testing"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-07T20:07:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,63 @@
+{
+	"name": "FinalePipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "HttptoParquet",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "HttptoParquet",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"FileName": {
+							"value": "@pipeline().parameters.Hyperparameter",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Parquet to SQL",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "HttptoParquet",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "parquet to sql",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"TransformFileName": {
+							"value": "@pipeline().parameters.Hyperparameter",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"Hyperparameter": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "New testing"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-09-07T14:48:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

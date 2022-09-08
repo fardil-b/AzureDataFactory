@@ -1,0 +1,24 @@
+{
+	"name": "LegoThemesParquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStoragefb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "old dataset"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "legothemes.parquet",
+				"fileSystem": "lego"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

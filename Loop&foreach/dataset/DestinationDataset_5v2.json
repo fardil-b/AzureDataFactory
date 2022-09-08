@@ -1,0 +1,27 @@
+{
+	"name": "DestinationDataset_5v2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStoragefb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "old dataset"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "person.csv",
+				"fileSystem": "sqlcsvdemo"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

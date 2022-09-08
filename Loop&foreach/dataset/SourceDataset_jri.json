@@ -1,0 +1,20 @@
+{
+	"name": "SourceDataset_jri",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServerfb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "old dataset"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Person",
+			"table": "Person"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
